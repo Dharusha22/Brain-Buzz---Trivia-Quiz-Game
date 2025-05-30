@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Buzz - Trivia Quiz Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="welcome-screen">
+                <div class="logo-icon">🧠</div>
+                <div class="logo"> <h1>Brain Buzz</h1></div>
+                <p>Challenge Your Mind with Fun Quizzes!</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="loadingText">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Instructions Screen -->
+        <div class="screen" id="instructionsScreen">
+            <div class="instructions-screen">
+                <h2 class="instructions-title">How to Play</h2>
+                <ul class="instruction-list">
+                    <li>🎯 Choose your favorite category and difficulty level</li>
+                    <li>⏰ Answer 5 questions in 15 seconds each</li>
+                    <li>💡 Use hints, 50:50, or skip if you need help</li>
+                    <li>🏆 Earn points based on your performance</li>
+                    <li>📊 Check the leaderboard to see how you rank!</li>
+                </ul>
+                <button class="btn" onclick="showNameScreen()" style="display: block; margin: 20px auto 0 auto;">Get Started</button>
+
+            </div>
+        </div>
+
+        <!-- Name Entry Screen -->
+        <div class="screen" id="nameScreen">
+            <div class="name-screen">
+                <h2>Enter Your Name</h2>
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Your Name" maxlength="20">
+                </div>
+                <button class="btn" onclick="showCategoryScreen()">Continue</button>
+                <button class="btn" onclick="showLeaderboard()">View Leaderboard</button>
+                 <button class="btn" onclick="exitGame()">Exit Game</button>
+            
+            </div>
+        </div>
+
+        <!-- Category Selection Screen -->
+        <div class="screen" id="categoryScreen">
+            <div class="category-screen">
+                <h2>Choose Category & Difficulty</h2>
+                <div class="categories-grid" id="categoriesGrid">
+                    <div class="category-btn" data-category="music">🎵 Music</div>
+                    <div class="category-btn" data-category="movies_tv">🎬 Movies/TV</div>
+                    <div class="category-btn" data-category="sports">⚽ Sports</div>
+                    <div class="category-btn" data-category="history">📜 History</div>
+                    <div class="category-btn" data-category="science">🔬 Science</div>
+                    <div class="category-btn" data-category="technology">💻 Technology</div>
+                    <div class="category-btn" data-category="art_design">🎨 Art and Design</div>
+                    <div class="category-btn" data-category="emoji_trivia">🤔 Emoji Trivia</div>
+                    <div class="category-btn" data-category="guess_logo">🏷️ Guess the Logo</div>
+                    <div class="category-btn" data-category="riddles_brain_teaser">🧩 Riddles and Brain Teasers</div>
+                </div>
+                <div class="difficulty-selector">
+                    <h3>Select Difficulty:</h3>
+                    <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                    <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                </div>
+                <button class="btn" onclick="startQuiz()">Start Quiz</button>
+                <button class="btn" onclick="goBack()">Back</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="screen" id="quizScreen">
+            <div class="quiz-screen">
+                <div class="quiz-header">
+                    <div class="question-counter" id="questionCounter">Question 1 of 5</div>
+                    <div class="timer" id="timer">15</div>
+                </div>
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <div class="quiz-controls">
+                    <button class="control-btn" onclick="useHint()">💡 Hint</button>
+                    <button class="control-btn" onclick="use5050()">50:50</button>
+                    <button class="control-btn" onclick="skipQuestion()">⏭️ Skip</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen" id="resultsScreen">
+            <div class="results-screen">
+                <h2>Quiz Complete!</h2>
+                <div class="score" id="finalScore">0/5</div>
+                <p id="scoreComment"></p>
+                <button class="btn" onclick="playAgain()">Play Again</button>
+                <button class="btn" onclick="chooseDifferentCategory()">Different Category</button>
+                <button class="btn" onclick="showLeaderboard()">View Leaderboard</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div class="screen" id="leaderboardScreen">
+            <div class="leaderboard-screen">
+                <h2>🏆 Leaderboard</h2>
+                <table class="leaderboard-table" id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                            <th>Category</th>
+                            <th>Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                    </tbody>
+                </table>
+                <button class="btn" onclick="goBackToName()">Back</button>
+            </div>
+        </div>
+    </div>
+
+   <script src="script.js"></script>
+
+</body>
+</html>
